@@ -19,7 +19,7 @@ int main()
         printf("Seccion critica!\n");
         sleep(1);
         levanta_semaforo(id_semaforo);
-        sleep(10);
+        sleep(2);
     }
 
     return 0;
