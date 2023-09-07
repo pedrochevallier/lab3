@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
 #include <clave.h>
+#include "stdlib.h"
+#include "stdio.h"
+#include "string.h"
+#include <unistd.h>
 
 int main()
 {
@@ -13,11 +13,11 @@ int main()
 
     inicia_semaforo(id_semaforo, VERDE);
 
-    while (1)
+    while(1)
     {
         espera_semaforo(id_semaforo);
-        printf("Seccion critica!\n");
-        sleep(1);
+            printf("Seccion critica!");
+            sleep(1);
         levanta_semaforo(id_semaforo);
         sleep(10);
     }
