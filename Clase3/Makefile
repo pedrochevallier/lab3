@@ -4,9 +4,9 @@ CFLAGS = -Wall -std=gnu89 -O3 -pedantic-errors
 
 HEADERS = -I./
 
-all = clean prog main2
+all: clean main main2
 
-prog:
+main:
 	$(CC) -o main main.c clave.c semaforo.c $(CFLAGS) $(HEADERS)
 
 main2:

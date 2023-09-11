@@ -6,7 +6,6 @@
 
 int main(int arg, char *argv[])
 {
-    int i;
     int id_semaforo;
 
     id_semaforo = creo_semaforo();
