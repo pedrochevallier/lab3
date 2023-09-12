@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <semaforo.h>
+#include <gestionarch.h>
 
 int main(int arg, char *argv[])
 {
@@ -10,6 +11,12 @@ int main(int arg, char *argv[])
     int vuelo;
     char destino[30+1];
     char nombre[30+1];
+    char file[] = "lote.dat";
+
+    FILE * archivo = NULL;
+
+    archivo = inAbrirArchivo(archivo, "w");
+    
 
     id_semaforo = creo_semaforo();
 
@@ -31,10 +38,12 @@ int main(int arg, char *argv[])
 
             printf("Se ingreso el vuelo %d",vuelo);
 
+            voEscribirArchivo(archivo, vuelo, destino, nombre);
             printf("\nIngrese el numero de vuelo: ");
             scanf("%d", &vuelo);
             
         }
+        voCerrarArchivo(archivo);
         sleep(1);
         levanta_semaforo(id_semaforo);
         sleep(10);

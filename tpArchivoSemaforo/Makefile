@@ -7,7 +7,7 @@ HEADERS = -I./
 all: clean main main2
 
 main:
-	$(CC) -o main main.c clave.c semaforo.c $(CFLAGS) $(HEADERS)
+	$(CC) -o main main.c clave.c semaforo.c gestionarch.c $(CFLAGS) $(HEADERS)
 
 main2:
 	$(CC) -o main2 main2.c clave.c semaforo.c $(CFLAGS) $(HEADERS)
