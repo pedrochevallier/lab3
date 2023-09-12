@@ -46,4 +46,3 @@ void espera_semaforo(int id_semaforo)
     operacion.sem_flg = 0;
     semop(id_semaforo, &operacion, 1);
 }
-
