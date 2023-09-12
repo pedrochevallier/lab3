@@ -49,8 +49,6 @@ int main(int arg, char *argv[])
             printf("\nIngrese el numero de vuelo: ");
             scanf("%d", &vuelo);
         }
-
-        sleep(10);
     }
 
     return 0;

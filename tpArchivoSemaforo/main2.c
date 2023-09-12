@@ -24,8 +24,9 @@ int main(int arg, char *argv[])
         
         voCerrarArchivo(archivo);
         levanta_semaforo(id_semaforo);
-        sleep(10);
         i++;
+
+        usleep(300 * 1000);
     }
 
     return 0;
