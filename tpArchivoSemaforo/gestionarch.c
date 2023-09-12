@@ -4,33 +4,50 @@
 #include <unistd.h>
 #include <gestionarch.h>
 
-FILE * inAbrirArchivo(FILE *cfptr, char mode[]){
-    if((cfptr = fopen("lote.dat", mode))==NULL){
+FILE * inAbrirArchivo(FILE *cfptr, const char *mode, const char *fileName)
+{
+    if ((cfptr = fopen(fileName, mode)) == NULL)
+    {
         printf("No se pudo abrir el archivo!\n");
         return NULL;
     }
-    else{
+    else
+    {
         return cfptr;
     }
 }
 
-void voCerrarArchivo(FILE *cfptr){
+void voCerrarArchivo(FILE *cfptr)
+{
     fclose(cfptr);
 }
 
-void voLeerArchivo(FILE *cfptr){
-    char product[15];
-    
+void voLeerArchivo(FILE *cfptr)
+{
+    char producto[100];
+    char *token;
     printf("\nLos Datos Ingresados son: \n\n");
-        while (!feof(cfptr))
+    /*while (!feof(cfptr))
         {
             fscanf(cfptr, "%s\n", product);
-            printf("%s\n", product);
+            printf("%s", product);
         }
+    */
+    while (fgets(producto, sizeof(producto), cfptr))
+    {
+        /*Tokenize the line based on tabs*/
+        token = strtok(producto, "\t");
+        while (token != NULL)
+        {
+            /* Process each token (data element)*/
+            printf("%s\t", token);
+            token = strtok(NULL, "\t");
+        }
+    }
+    printf("\n");
 }
 
-void voEscribirArchivo(FILE *cfptr, int vuelo, char *destino, char *nombre){
-    
-    fprintf(cfptr, "%d %s %s \n", vuelo, destino, nombre);
-    
+void voEscribirArchivo(FILE *cfptr, int vuelo, char *destino, char *nombre)
+{
+    fprintf(cfptr, "%d\t%s\t%s\n", vuelo, destino, nombre);
 }
