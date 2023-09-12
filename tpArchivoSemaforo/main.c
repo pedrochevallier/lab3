@@ -24,7 +24,6 @@ int main(int arg, char *argv[])
 
     while (1)
     {
-        espera_semaforo(id_semaforo);
         printf("Ingrese el numero de vuelo: ");
         scanf("%d", &vuelo);
         while (vuelo != 0)
@@ -41,13 +40,16 @@ int main(int arg, char *argv[])
 
             printf("Se ingreso el vuelo %d", vuelo);
 
+            espera_semaforo(id_semaforo);
+
             voEscribirArchivo(file, vuelo, destino, nombre);
+            voCerrarArchivo(file);
+            levanta_semaforo(id_semaforo);
+            
             printf("\nIngrese el numero de vuelo: ");
             scanf("%d", &vuelo);
         }
-        voCerrarArchivo(file);
 
-        levanta_semaforo(id_semaforo);
         sleep(10);
     }
 

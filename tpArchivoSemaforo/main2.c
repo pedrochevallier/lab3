@@ -11,7 +11,7 @@ int main(int arg, char *argv[])
     int id_semaforo;
     FILE *archivo = NULL;
     char fileName[] = "lote.dat";
-
+    
     
     id_semaforo = creo_semaforo();
 
@@ -21,6 +21,7 @@ int main(int arg, char *argv[])
 
         archivo = inAbrirArchivo(archivo, "r", fileName);
         voLeerArchivo(archivo);
+        
         voCerrarArchivo(archivo);
         levanta_semaforo(id_semaforo);
         sleep(10);
