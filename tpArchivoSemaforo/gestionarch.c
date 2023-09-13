@@ -36,23 +36,23 @@ int inLeerArchivo(FILE *cfptr)
     while (fgets(producto, sizeof(producto), cfptr))
     {
         /*Tokenize the line based on tabs*/
-        token = strtok(producto, "\t");
+        token = strtok(producto, ",");
         while (token != NULL)
         {
             /* Process each token (data element)*/
             printf("%s\t", token);
-            token = strtok(NULL, "\t");
+            token = strtok(NULL, ",");
             content_found = 1;
         }
     }
-    printf("\n");
+    
 
     return content_found;
 }
 
 void voEscribirArchivo(FILE *cfptr, int vuelo, char *destino, char *nombre)
 {
-    fprintf(cfptr, "%d\t%s\t%s\n", vuelo, destino, nombre);
+    fprintf(cfptr, "%d,%s,%s\n", vuelo, destino, nombre);
 }
 
 void voRenombrarArchivo(char *nombre_archivo, char *nuevo_archivo_nombre)

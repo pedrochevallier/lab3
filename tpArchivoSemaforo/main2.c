@@ -20,7 +20,7 @@ int main(int arg, char *argv[])
     {
         espera_semaforo(id_semaforo);
 
-        if((archivo = inAbrirArchivo(archivo, "r", fileName)) == NULL){ // if NULL el archivo fue renombrado, lo creo de nuevo.
+        if((archivo = inAbrirArchivo(archivo, "r", fileName)) == NULL){ /*if NULL el archivo fue renombrado, lo creo de nuevo.*/
             archivo = inAbrirArchivo(archivo, "w", fileName);
         }
         
