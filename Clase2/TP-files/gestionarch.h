@@ -3,7 +3,7 @@
 
 FILE * inAbrirArchivo(FILE *, char *);
 void voCerrarArchivo(FILE *);
-void voLeerArchivo(FILE *);
+void inLeerArchivo(FILE *);
 void voEscribirArchivo(FILE *);
 
 #endif

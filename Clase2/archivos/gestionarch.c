@@ -11,7 +11,7 @@ void voCerrarArchivo(){
 
 }
 
-void voLeerArchivo(){
+void inLeerArchivo(){
 
 }
 

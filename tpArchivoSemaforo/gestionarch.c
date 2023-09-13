@@ -22,11 +22,11 @@ void voCerrarArchivo(FILE *cfptr)
     fclose(cfptr);
 }
 
-void voLeerArchivo(FILE *cfptr)
+int inLeerArchivo(FILE *cfptr)
 {
     char producto[100];
     char *token;
-    printf("\nLos Datos Ingresados son: \n\n");
+    int content_found = 0;
     /*while (!feof(cfptr))
         {
             fscanf(cfptr, "%s\n", product);
@@ -42,12 +42,25 @@ void voLeerArchivo(FILE *cfptr)
             /* Process each token (data element)*/
             printf("%s\t", token);
             token = strtok(NULL, "\t");
+            content_found = 1;
         }
     }
     printf("\n");
+
+    return content_found;
 }
 
 void voEscribirArchivo(FILE *cfptr, int vuelo, char *destino, char *nombre)
 {
     fprintf(cfptr, "%d\t%s\t%s\n", vuelo, destino, nombre);
+}
+
+void voRenombrarArchivo(char *nombre_archivo, char *nuevo_archivo_nombre)
+{
+    int result = rename(nombre_archivo, nuevo_archivo_nombre);
+    if (result == 0) {
+        printf("The file is renamed successfully.");
+    } else {
+        printf("The file could not be renamed.");
+    }
 }

@@ -16,16 +16,21 @@ int main(int arg, char *argv[])
     FILE *file = NULL;
     FILE *newFile = NULL;
 
-    file = inAbrirArchivo(file, "w", fileName);
-
     id_semaforo = creo_semaforo();
     
     inicia_semaforo(id_semaforo, VERDE);
 
     while (1)
     {
+        printf("\n Ingresando nuevo lote \n");
         printf("Ingrese el numero de vuelo: ");
         scanf("%d", &vuelo);
+        while ((vuelo < 1000 || vuelo > 1010))
+        {
+            printf("Error - Ingrese el numero de vuelo: ");
+            scanf("%d", &vuelo);
+        }
+        
         while (vuelo != 0)
         {
             /*inserto un scanf que atrapa el salto de linea dejado por el scanf anterior*/
@@ -38,16 +43,23 @@ int main(int arg, char *argv[])
             printf("Ingrese nombre pasajero: ");
             scanf("%[^\n]", nombre);
 
-            printf("Se ingreso el vuelo %d", vuelo);
-
             espera_semaforo(id_semaforo);
 
+            file = inAbrirArchivo(file, "w", fileName);
             voEscribirArchivo(file, vuelo, destino, nombre);
             voCerrarArchivo(file);
+
+            printf("Se ingreso el vuelo %d \n", vuelo);
+            
             levanta_semaforo(id_semaforo);
             
-            printf("\nIngrese el numero de vuelo: ");
+            printf("Ingrese el numero de vuelo: saraza");
             scanf("%d", &vuelo);
+            while ((vuelo < 1000 || vuelo > 1010) && vuelo != 0)
+            {
+                printf("Error - Ingrese el numero de vuelo: adentro while");
+                scanf("%d", &vuelo);
+            }
         }
     }
 

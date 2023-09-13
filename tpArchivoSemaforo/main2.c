@@ -7,11 +7,12 @@
 
 int main(int arg, char *argv[])
 {
-    int i;
+    int i = 0;
     int id_semaforo;
+    int file_flag;
     FILE *archivo = NULL;
     char fileName[] = "lote.dat";
-    
+    char nuevo_archivo_nombre[20];
     
     id_semaforo = creo_semaforo();
 
@@ -19,12 +20,24 @@ int main(int arg, char *argv[])
     {
         espera_semaforo(id_semaforo);
 
-        archivo = inAbrirArchivo(archivo, "r", fileName);
-        voLeerArchivo(archivo);
+        if((archivo = inAbrirArchivo(archivo, "r", fileName)) == NULL){ // if NULL el archivo fue renombrado, lo creo de nuevo.
+            archivo = inAbrirArchivo(archivo, "w", fileName);
+        }
         
-        voCerrarArchivo(archivo);
+        file_flag = inLeerArchivo(archivo);
+        
+        if(file_flag == 1)
+        {
+            printf("\nLos Datos Ingresados son: \n\n");
+            sprintf(nuevo_archivo_nombre, "lote-%d.dat", i);
+            voCerrarArchivo(archivo);
+            voRenombrarArchivo(fileName, nuevo_archivo_nombre);
+            i++;
+        }else{
+            voCerrarArchivo(archivo);
+        }
+
         levanta_semaforo(id_semaforo);
-        i++;
 
         usleep(300 * 1000);
     }

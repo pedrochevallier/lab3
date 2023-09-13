@@ -20,7 +20,7 @@ int main(int arg, char *argv[])
     cfptr = inAbrirArchivo(cfptr, "r");
 
     if(cfptr != NULL){
-        voLeerArchivo(cfptr);
+        inLeerArchivo(cfptr);
         voCerrarArchivo(cfptr);
     }
 
