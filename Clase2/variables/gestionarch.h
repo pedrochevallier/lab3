@@ -3,7 +3,7 @@
 
 int inAbrirArchivo();
 void voCerrarArchivo();
-void voLeerArchivo();
+void inLeerArchivo();
 void voEscribirArchivo();
 
 #endif

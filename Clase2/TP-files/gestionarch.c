@@ -18,7 +18,7 @@ void voCerrarArchivo(FILE *cfptr){
     fclose(cfptr);
 }
 
-void voLeerArchivo(FILE *cfptr){
+void inLeerArchivo(FILE *cfptr){
     char product[15];
     
     printf("\nLos Datos Ingresados son: \n\n");
