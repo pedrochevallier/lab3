@@ -5,47 +5,51 @@
 #include <semaforo.h>
 #include <gestionarch.h>
 
-struct orden ordenes[50];
+/*Declare struct defined in gestionarch*/
+struct orden orders[50];
 
 int main(int arg, char *argv[])
 {
-    int id_semaforo;
+    int semaphore_id;
     int i = 0;
     int j = 0;
 
-    FILE *archivo = NULL;
+    FILE *file = NULL;
 
-    id_semaforo = creo_semaforo();
+    semaphore_id = create_semaphore();
 
-    inicia_semaforo(id_semaforo, VERDE);
+    init_semaphore(semaphore_id, VERDE);
 
     while (1)
     {
         printf("Ingrese el precio: ");
-        scanf("%d", &ordenes[i].price);
+        scanf("%d", &orders[i].price);
 
-        while (ordenes[i].price != 0)
+        while (orders[i].price != 0)
         {
             /*catch new line left by scanf*/
             scanf("%*c");
             printf("Ingrese descripcion: ");
-            scanf("%[^\n]", ordenes[i].description);
+            scanf("%[^\n]", orders[i].description);
 
             i++;
 
             printf("Ingrese precio: ");
-            scanf("%d", &ordenes[i].price);
+            scanf("%d", &orders[i].price);
         }
 
-        espera_semaforo(id_semaforo);
-        archivo = inAbrirArchivo(archivo, "w", "orders.csv");
+        semaphore_wait(semaphore_id);
+        file = inOpenFile(file, "w", "orders.csv");
         for (j = 0; j < i; j++)
         {
-            voEscribirArchivo(archivo, ordenes[j]);
+            /*pass file and order struct to function*/
+            voWriteFile(file, orders[j]);
         }
+        /*reset i*/
         i = 0;
-        voCerrarArchivo(archivo);
-        levanta_semaforo(id_semaforo);
+        /*Close file*/
+        voCloseFile(file);
+        semaphore_release(semaphore_id);
         usleep(100 * 1000);
     }
     return 0;

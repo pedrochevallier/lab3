@@ -14,13 +14,13 @@ int main(int arg, char *argv[])
     FILE *archivo = NULL;
 
 
-    id_semaforo = creo_semaforo();
+    id_semaforo = create_semaphore();
 
     while (1)
     {
-        espera_semaforo(id_semaforo);
+        semaphore_wait(id_semaforo);
         printf("Semaforo mio\n");
-        levanta_semaforo(id_semaforo);
+        semaphore_release(id_semaforo);
         usleep(100 * 1000);
     }
 

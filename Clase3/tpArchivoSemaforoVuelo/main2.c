@@ -14,30 +14,30 @@ int main(int arg, char *argv[])
     char fileName[] = "lote.dat";
     char nuevo_archivo_nombre[20];
     
-    id_semaforo = creo_semaforo();
+    id_semaforo = create_semaphore();
 
     while (1)
     {
-        espera_semaforo(id_semaforo);
+        semaphore_wait(id_semaforo);
 
-        if((archivo = inAbrirArchivo(archivo, "r", fileName)) == NULL){ /*if NULL el archivo fue renombrado, lo creo de nuevo.*/
-            archivo = inAbrirArchivo(archivo, "w", fileName);
+        if((archivo = inOpenFile(archivo, "r", fileName)) == NULL){ /*if NULL el archivo fue renombrado, lo creo de nuevo.*/
+            archivo = inOpenFile(archivo, "w", fileName);
         }
         
-        file_flag = inLeerArchivo(archivo);
+        file_flag = inReadFile(archivo);
         
         if(file_flag == 1)
         {
             printf("\nLos Datos Ingresados son: \n\n");
             sprintf(nuevo_archivo_nombre, "lote-%d.dat", i);
-            voCerrarArchivo(archivo);
+            voCloseFile(archivo);
             voRenombrarArchivo(fileName, nuevo_archivo_nombre);
             i++;
         }else{
-            voCerrarArchivo(archivo);
+            voCloseFile(archivo);
         }
 
-        levanta_semaforo(id_semaforo);
+        semaphore_release(id_semaforo);
 
         usleep(300 * 1000);
     }

@@ -7,9 +7,9 @@ struct orden
     char description[50];
 };
 
-FILE * inAbrirArchivo(FILE *, const char *, const char *);
-void voCerrarArchivo(FILE *);
-int inLeerArchivo(FILE *);
-void voEscribirArchivo(FILE *, struct orden);
+FILE * inOpenFile(FILE *, const char *, const char *);
+void voCloseFile(FILE *);
+int inReadFile(FILE *);
+void voWriteFile(FILE *, struct orden);
 
 #endif

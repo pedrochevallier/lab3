@@ -37,7 +37,7 @@ int main(int arg, char *argv[])
     meds.cant2 = 0;
     meds.cant3 = 0;
 
-    id_semaforo = creo_semaforo();
+    id_semaforo = create_semaphore();
 
     printf("Indique que proceso es (5, 10 o 20): ");
     scanf("%d", &cant);
@@ -51,10 +51,10 @@ int main(int arg, char *argv[])
 
     while (1)
     {
-        espera_semaforo(id_semaforo);
-        if ((archivo = inAbrirArchivo(archivo, "r", fileName)) != NULL)
+        semaphore_wait(id_semaforo);
+        if ((archivo = inOpenFile(archivo, "r", fileName)) != NULL)
         {
-            tipo = inLeerArchivo(archivo);
+            tipo = inReadFile(archivo);
             if (tipo == 1)
             {
                 meds.cant1++;
@@ -73,14 +73,14 @@ int main(int arg, char *argv[])
             }
 
             truncate(fileName, 0);
-            voCerrarArchivo(archivo);
+            voCloseFile(archivo);
         }
         else
         {
-            archivo = inAbrirArchivo(archivo, "w", fileName);
+            archivo = inOpenFile(archivo, "w", fileName);
         }
 
-        levanta_semaforo(id_semaforo);
+        semaphore_release(id_semaforo);
         usleep(100 * 1000);
     }
 
