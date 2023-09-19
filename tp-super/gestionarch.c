@@ -58,7 +58,7 @@ int inReadFile(FILE *file)
     while (fgets(line, 1024, file))
     {
         char *tmp = strdup(line);
-        i = atoi(getfield(tmp, 2));
+        i += atoi(getfield(tmp, 2));
         free(tmp);
     }
 
