@@ -18,7 +18,7 @@ int main(int arg, char *argv[])
 
     FILE *archivo = NULL;
 
-    if (arg != 2)
+    if (arg != 3)
     {
         printf("Ingrese dos parametros, uno de minimo de items y otro de maximo de items.");
         return 1;
@@ -26,7 +26,7 @@ int main(int arg, char *argv[])
 
     minimum_items = atoi(argv[1]);
     maximum_items = atoi(argv[2]);
-    
+
     id_semaforo = create_semaphore();
 
     while (1)
