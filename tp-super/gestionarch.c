@@ -22,30 +22,52 @@ void voCloseFile(FILE *cfptr)
     fclose(cfptr);
 }
 
-int inReadFile(FILE *cfptr)
+int getCant(FILE *file)
+{
+    char producto[100];
+    int i = 0;
+
+    while (fgets(producto, sizeof(producto), file))
+    {
+        i++;
+    }
+
+    return i;
+}
+
+const char *getfield(char *line, int num)
+{
+    const char *tok;
+    for (tok = strtok(line, ",");
+         tok && *tok;
+         tok = strtok(NULL, ","))
+    {
+        if (!--num)
+            return tok;
+    }
+    return NULL;
+}
+
+int inReadFile(FILE *file)
 {
     char producto[100];
     char *token;
     int i = 0;
 
-    while (fgets(producto, sizeof(producto), cfptr))
+    char line[1024];
+    while (fgets(line, 1024, file))
     {
-        /*Tokenize the line based on tabs*/
-        token = strtok(producto, ",");
-        while (token != NULL)
-        {
-            /* Process each token (data element)*/
-            if(i == 0){
-                i = atoi(token);
-            }
-            token = strtok(NULL, ",");
-        }
+        char *tmp = strdup(line);
+        i = atoi(getfield(tmp, 1));
+        printf("Field 3 would be %s\n", getfield(tmp, 3));
+
+        free(tmp);
     }
-    
+
     return i;
 }
 
 void voWriteFile(FILE *cfptr, struct orden order)
 {
-    fprintf(cfptr, "%d,%s\n", order.price, order.description);
+    fprintf(cfptr, "%d,%d,%s\n", order.id, order.price, order.description);
 }

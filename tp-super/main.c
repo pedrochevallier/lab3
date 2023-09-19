@@ -22,6 +22,7 @@ int main(int arg, char *argv[])
 
     while (1)
     {
+        orders[i].id = i;
         printf("Ingrese el precio: ");
         scanf("%d", &orders[i].price);
 
@@ -34,6 +35,7 @@ int main(int arg, char *argv[])
 
             i++;
 
+            orders[i].id = i;
             printf("Ingrese precio: ");
             scanf("%d", &orders[i].price);
         }
