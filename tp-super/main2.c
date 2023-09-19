@@ -34,6 +34,7 @@ int main(int arg, char *argv[])
                 printf("Cantidad de registros en el archivo: %d\n", i);
                 rewind(archivo);
                 sum = inReadFile(archivo);
+                printf("%d", sum);
                 truncate(fileName, 0);
                 voCloseFile(archivo);
                 semaphore_release(id_semaforo);
