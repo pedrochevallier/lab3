@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <unistd.h>
 #include <gestionarch.h>
 
 FILE *inOpenFile(FILE *cfptr, const char *mode, const char *fileName)

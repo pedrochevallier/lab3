@@ -3,7 +3,6 @@
 #include <unistd.h>
 #include <string.h>
 #include <semaforo.h>
-#include <clave.h>
 #include <gestionarch.h>
 
 int main(int arg, char *argv[])
