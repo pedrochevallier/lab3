@@ -34,6 +34,8 @@ int main(int arg, char *argv[])
             /*catch new line left by scanf*/
             scanf("%*c");
             printf("Ingrese descripcion: ");
+            /*IMPORTANT*/
+            memset(orders[i].description, 0x00, sizeof(orders[i].description));
             scanf("%[^\n]", orders[i].description);
 
             i++;

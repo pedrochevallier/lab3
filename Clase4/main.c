@@ -23,7 +23,7 @@ int main(int arg, char *argv[])
 
     while (1)
     {
-        type = generartype();
+        type = generarTipo();
         color = generarColor();
         printf("Cuantas pastillas desea realizar? (5, 10 o 20): ");
         scanf("%d",&quantity);
