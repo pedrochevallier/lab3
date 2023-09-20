@@ -20,6 +20,9 @@ int main(int arg, char *argv[])
 
     init_semaphore(semaphore_id, VERDE);
 
+    file = inOpenFile(file, "w", "orders.csv");
+    voCloseFile(file);
+
     while (1)
     {
         orders[i].id = i;

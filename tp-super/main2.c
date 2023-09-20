@@ -6,6 +6,7 @@
 #include <clave.h>
 #include <gestionarch.h>
 
+
 int main(int arg, char *argv[])
 {
     int id_semaforo;
@@ -32,7 +33,7 @@ int main(int arg, char *argv[])
     while (1)
     {
         semaphore_wait(id_semaforo);
-
+        
         if ((archivo = inOpenFile(archivo, "r", fileName)) == NULL)
         {
             semaphore_release(id_semaforo);
@@ -40,12 +41,19 @@ int main(int arg, char *argv[])
         else
         {
             i = getCant(archivo);
+
+            /*If the numbers of items corresponds, process file. If not pass and release*/
             if (i >= minimum_items && i <= maximum_items)
             {
-                printf("Cantidad de registros en el archivo: %d\n", i);
+                /*rewind file pointer*/
                 rewind(archivo);
+                
+                /*get the sum of column*/
                 sum = inReadFile(archivo);
+                
                 printf("El total de la compra es: %d\n", sum);
+
+                /*clean file*/
                 truncate(fileName, 0);
                 voCloseFile(archivo);
                 semaphore_release(id_semaforo);
