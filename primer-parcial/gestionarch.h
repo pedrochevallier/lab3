@@ -1,5 +1,6 @@
 #ifndef _GESTIONARCH
 #define _GESTIONARCH
+#define SIZE 1024
 
 struct alumno
 {
@@ -11,8 +12,8 @@ struct alumno
 FILE * inOpenFile(FILE *, const char *, const char *);
 void voCloseFile(FILE *);
 int getCant(FILE *);
-const char* getfield(char*, int);
 void voReadFile(FILE *);
-void voWriteFile(FILE *, struct alumno);
+void voWriteFile1(FILE *, struct alumno);
+void voWriteFile2(FILE *, struct alumno);
 
 #endif

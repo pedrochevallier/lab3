@@ -6,18 +6,14 @@
 #include <clave.h>
 #include <gestionarch.h>
 
-
 int main(int arg, char *argv[])
 {
     int id_semaforo;
-    int i = 0;
-    int sum = 0;
     int tipoAlumno;
     int cant = 0;
     int newCant = 0;
-    
 
-    char fileName[20] = "alumnos.csv";
+    char fileName[SIZE] = "alumnos.csv";
 
     FILE *archivo = NULL;
 
@@ -29,19 +25,20 @@ int main(int arg, char *argv[])
 
     tipoAlumno = atoi(argv[1]);
 
-    if(tipoAlumno != 1 && tipoAlumno != 2){
+    if (tipoAlumno != 1 && tipoAlumno != 2)
+    {
         printf("ERROR - Ingrese que tipo de alumno desea procesar, 1 para inicial, 2 para transferencia.");
         return 1;
     }
 
-    sprintf(fileName, "alumnos%d.csv", tipoAlumno);
+    sprintf(fileName, "alumnos%d.dat", tipoAlumno);
 
     id_semaforo = create_semaphore();
 
     while (1)
     {
         semaphore_wait(id_semaforo);
-        
+
         if ((archivo = inOpenFile(archivo, "r", fileName)) == NULL)
         {
             semaphore_release(id_semaforo);
@@ -58,18 +55,13 @@ int main(int arg, char *argv[])
 
                 /*clear terminal*/
                 system("clear");
-                
+
                 /*read file*/
                 voReadFile(archivo);
+            }
 
-                voCloseFile(archivo);
-                semaphore_release(id_semaforo);
-            }
-            else
-            {
-                voCloseFile(archivo);
-                semaphore_release(id_semaforo);
-            }
+            voCloseFile(archivo);
+            semaphore_release(id_semaforo);
         }
 
         usleep(100 * 1000);

@@ -24,7 +24,7 @@ void voCloseFile(FILE *cfptr)
 
 int getCant(FILE *file)
 {
-    char producto[100];
+    char producto[SIZE];
     int i = 0;
 
     while (fgets(producto, sizeof(producto), file))
@@ -35,29 +35,21 @@ int getCant(FILE *file)
     return i;
 }
 
-const char *getfield(char *line, int num)
-{
-    const char *tok;
-    for (tok = strtok(line, ",");
-         tok && *tok;
-         tok = strtok(NULL, ","))
-    {
-        if (!--num)
-            return tok;
-    }
-    return NULL;
-}
-
 void voReadFile(FILE *file)
 {
-    char line[1024];
+    char line[SIZE];
     while (fgets(line, sizeof(line), file))
     {
-        printf(line);   
+        printf("%s",line);   
     }
 }
 
-void voWriteFile(FILE *cfptr, struct alumno alumnos)
+void voWriteFile1(FILE *cfptr, struct alumno alumnos)
 {
-    fprintf(cfptr, "%d,%d,%s\n", alumnos.tipoAlumno, alumnos.cantMaterias, alumnos.NombreApellido);
+    fprintf(cfptr, "Alumno: %s, se incribe sin materias.\n", alumnos.NombreApellido);
+}
+
+void voWriteFile2(FILE *cfptr, struct alumno alumnos)
+{
+    fprintf(cfptr, "Alumno: %s, es necesario validar %d materias.\n", alumnos.NombreApellido, alumnos.cantMaterias);
 }
