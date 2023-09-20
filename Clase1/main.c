@@ -25,13 +25,9 @@ int main(int arg, char *argv[])
     memset(cadena, 0x00, sizeof(cadena)); /* set memoria */
     printf("primero HOLA\n");
     memcpy(cadena, "pepe2", 5);
-    memcpy(cadena, "1234", 4);
+    memcpy(cadena, "1234", 3);
     printf("%s\n", cadena);
-    cadena[0] = '2';
-    printf("%02x\n", cadena[0]);
-    strcpy(cadena, ".");
-    entero[0] = 0;
-    printf("%02x\n", entero[0]);
+    
 
     /* varEntero = 0;
     varEntero = 1230;*/

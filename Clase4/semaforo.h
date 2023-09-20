@@ -5,9 +5,9 @@
 #define VERDE 1
 #define CLAVE_BASE 33
 
-int creo_semaforo();
-void inicia_semaforo(int, int);
-void levanta_semaforo(int);
-void espera_semaforo(int);
+int create_semaphore();
+void init_semaphore(int, int);
+void semaphore_release(int);
+void semaphore_wait(int);
 
 #endif

@@ -8,16 +8,16 @@ int main(int arg, char *argv[])
 {
     int id_semaforo;
 
-    id_semaforo = creo_semaforo();
+    id_semaforo = create_semaphore();
 
-    inicia_semaforo(id_semaforo, VERDE);
+    init_semaphore(id_semaforo, VERDE);
 
     while (1)
     {
-        espera_semaforo(id_semaforo);
+        semaphore_wait(id_semaforo);
         printf("Seccion critica!\n");
         sleep(1);
-        levanta_semaforo(id_semaforo);
+        semaphore_release(id_semaforo);
         sleep(10);
     }
 

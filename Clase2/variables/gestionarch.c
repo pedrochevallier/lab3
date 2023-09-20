@@ -3,18 +3,18 @@
 #include "string.h"
 #include "gestionarch.h"
 
-int inAbrirArchivo(){
+int inOpenFile(){
 
 }
 
-void voCerrarArchivo(){
+void voCloseFile(){
 
 }
 
-void inLeerArchivo(){
+void inReadFile(){
 
 }
 
-void voEscribirArchivo(){
+void voWriteFile(){
     
 }

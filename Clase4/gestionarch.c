@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include "gestionarch.h"
 
-FILE *inAbrirArchivo(FILE *cfptr, const char *mode, const char *fileName)
+FILE *inOpenFile(FILE *cfptr, const char *mode, const char *fileName)
 {
     if ((cfptr = fopen(fileName, mode)) == NULL)
     {
@@ -17,12 +17,12 @@ FILE *inAbrirArchivo(FILE *cfptr, const char *mode, const char *fileName)
     }
 }
 
-void voCerrarArchivo(FILE *cfptr)
+void voCloseFile(FILE *cfptr)
 {
     fclose(cfptr);
 }
 
-int inLeerArchivo(FILE *cfptr)
+int inReadFile(FILE *cfptr)
 {
     char producto[100];
     char *token;
@@ -45,7 +45,7 @@ int inLeerArchivo(FILE *cfptr)
     return i;
 }
 
-void voEscribirArchivo(FILE *cfptr, int tipo, int color)
+void voWriteFile(FILE *cfptr, int tipo, int color)
 {
     fprintf(cfptr, "%d,%d\n", tipo, color);
 }

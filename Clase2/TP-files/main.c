@@ -10,18 +10,18 @@ int main(int arg, char *argv[])
     
     FILE *cfptr = NULL;
     
-    cfptr = inAbrirArchivo(cfptr, "w");
+    cfptr = inOpenFile(cfptr, "w");
 
     if(cfptr!= NULL){
-        voEscribirArchivo(cfptr);
-        voCerrarArchivo(cfptr);
+        voWriteFile(cfptr);
+        voCloseFile(cfptr);
     }
 
-    cfptr = inAbrirArchivo(cfptr, "r");
+    cfptr = inOpenFile(cfptr, "r");
 
     if(cfptr != NULL){
-        inLeerArchivo(cfptr);
-        voCerrarArchivo(cfptr);
+        inReadFile(cfptr);
+        voCloseFile(cfptr);
     }
 
     return 0;

@@ -16,9 +16,9 @@ int main(int arg, char *argv[])
     FILE *file = NULL;
     FILE *newFile = NULL;
 
-    id_semaforo = creo_semaforo();
+    id_semaforo = create_semaphore();
     
-    inicia_semaforo(id_semaforo, VERDE);
+    init_semaphore(id_semaforo, VERDE);
 
     while (1)
     {
@@ -43,15 +43,15 @@ int main(int arg, char *argv[])
             printf("Ingrese nombre pasajero: ");
             scanf("%[^\n]", nombre);
 
-            espera_semaforo(id_semaforo);
+            semaphore_wait(id_semaforo);
 
-            file = inAbrirArchivo(file, "w", fileName);
-            voEscribirArchivo(file, vuelo, destino, nombre);
-            voCerrarArchivo(file);
+            file = inOpenFile(file, "w", fileName);
+            voWriteFile(file, vuelo, destino, nombre);
+            voCloseFile(file);
 
             printf("Se ingreso el vuelo %d \n", vuelo);
             
-            levanta_semaforo(id_semaforo);
+            semaphore_release(id_semaforo);
             
             printf("Ingrese el numero de vuelo: saraza");
             scanf("%d", &vuelo);

@@ -1,7 +1,7 @@
 #include <clave.h>
-#include "stdlib.h"
-#include "stdio.h"
-#include "string.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 #include <semaforo.h>
 #include <sys/ipc.h>
@@ -28,6 +28,7 @@ void init_semaphore(int id_semaforo, int valor)
 void semaphore_release(int id_semaforo)
 {
     struct sembuf operacion;
+    
     operacion.sem_num = 0;
     operacion.sem_op = 1;
     /* incrementa el semaforo en 1*/
@@ -38,9 +39,11 @@ void semaphore_release(int id_semaforo)
 void semaphore_wait(int id_semaforo)
 {
     struct sembuf operacion;
+
     operacion.sem_num = 0;
     operacion.sem_op = -1;
     /* decrementa el semaforo en 1*/
     operacion.sem_flg = 0;
     semop(id_semaforo, &operacion, 1);
 }
+

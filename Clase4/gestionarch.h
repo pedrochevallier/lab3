@@ -1,9 +1,9 @@
 #ifndef _GESTIONARCH
 #define _GESTIONARCH
 
-FILE * inAbrirArchivo(FILE *, const char *, const char *);
-void voCerrarArchivo(FILE *);
-int inLeerArchivo(FILE *);
-void voEscribirArchivo(FILE *, int, int);
+FILE * inOpenFile(FILE *, const char *, const char *);
+void voCloseFile(FILE *);
+int inReadFile(FILE *);
+void voWriteFile(FILE *, int, int);
 
 #endif

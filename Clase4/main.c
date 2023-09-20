@@ -9,46 +9,46 @@
 int main(int arg, char *argv[])
 {
     int id_semaforo;
-    int tipo;
+    int type;
     int color;
-    int cant=0;
+    int quantity=0;
     char fileName1[] = "lote5.dat";
     char fileName2[] = "lote10.dat";
     char fileName3[] = "lote20.dat";
     FILE *archivo = NULL;
 
-    id_semaforo = creo_semaforo();
+    id_semaforo = create_semaphore();
 
-    inicia_semaforo(id_semaforo, VERDE);
+    init_semaphore(id_semaforo, VERDE);
 
     while (1)
     {
-        tipo = generarTipo();
+        type = generarTipo();
         color = generarColor();
         printf("Cuantas pastillas desea realizar? (5, 10 o 20): ");
-        scanf("%d",&cant);
-        if(cant == 5){
-            espera_semaforo(id_semaforo);
-            archivo = inAbrirArchivo(archivo, "w", fileName1);
-            voEscribirArchivo(archivo, tipo, color);
-            voCerrarArchivo(archivo);
-            levanta_semaforo(id_semaforo);
+        scanf("%d",&quantity);
+        if(quantity == 5){
+            semaphore_wait(id_semaforo);
+            archivo = inOpenFile(archivo, "w", fileName1);
+            voWriteFile(archivo, type, color);
+            voCloseFile(archivo);
+            semaphore_release(id_semaforo);
         }
-        else if (cant == 10)
+        else if (quantity == 10)
         {
-            espera_semaforo(id_semaforo);
-            archivo = inAbrirArchivo(archivo, "w", fileName2);
-            voEscribirArchivo(archivo, tipo, color);
-            voCerrarArchivo(archivo);
-            levanta_semaforo(id_semaforo);
+            semaphore_wait(id_semaforo);
+            archivo = inOpenFile(archivo, "w", fileName2);
+            voWriteFile(archivo, type, color);
+            voCloseFile(archivo);
+            semaphore_release(id_semaforo);
         }
-        else if (cant == 20)
+        else if (quantity == 20)
         {
-            espera_semaforo(id_semaforo);
-            archivo = inAbrirArchivo(archivo, "w", fileName3);
-            voEscribirArchivo(archivo, tipo, color);
-            voCerrarArchivo(archivo);
-            levanta_semaforo(id_semaforo);
+            semaphore_wait(id_semaforo);
+            archivo = inOpenFile(archivo, "w", fileName3);
+            voWriteFile(archivo, type, color);
+            voCloseFile(archivo);
+            semaphore_release(id_semaforo);
         }
         else{
             printf("Numero invalido, ingrese nuevamente.\n");

@@ -8,7 +8,7 @@
 #include <sys/sem.h>
 
 /*funcion que crea el semaforo*/
-int creo_semaforo()
+int create_semaphore()
 {
     key_t clave = creo_clave(CLAVE_BASE);
     int id_semaforo = semget(clave, 1, 0600 | IPC_CREAT);
@@ -20,12 +20,12 @@ int creo_semaforo()
     }
     return id_semaforo;
 } /*inicia el semaforo*/
-void inicia_semaforo(int id_semaforo, int valor)
+void init_semaphore(int id_semaforo, int valor)
 {
     semctl(id_semaforo, 0, SETVAL, valor);
 }
 /*levanta el semaforo*/
-void levanta_semaforo(int id_semaforo)
+void semaphore_release(int id_semaforo)
 {
     struct sembuf operacion;
     printf("Levanta SEMAFORO \n");
@@ -36,7 +36,7 @@ void levanta_semaforo(int id_semaforo)
     semop(id_semaforo, &operacion, 1);
 }
 /* espera semaforo*/
-void espera_semaforo(int id_semaforo)
+void semaphore_wait(int id_semaforo)
 {
     struct sembuf operacion;
         printf("Espera SEMAFORO \n");
