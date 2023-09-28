@@ -1,4 +1,4 @@
-CC = gcc
+CC = gcc-11
 
 CFLAGS = -Wall -std=gnu89 -O3 -pedantic-errors
 
