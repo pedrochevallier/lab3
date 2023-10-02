@@ -1,5 +1,5 @@
 #ifndef _MEMORY
-#define _EMMORY
+#define _MEMORY
 #include <sys/shm.h>
 #include <stdio.h>
 

@@ -5,6 +5,7 @@
 #include <sys/ipc.h>
 #include <key.h>
 #include <memory.h>
+#include <time.h>
 
 #define CANTIDAD 10
 #define CANTIDAD_TOTAL 10

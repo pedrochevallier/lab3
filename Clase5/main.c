@@ -24,7 +24,7 @@ int main(int arg, char *argv[])
 	int id_memoria;	
 	dato *memoria = NULL;
 	
-	int i,j;
+	int i;
 
 	memoria = (dato*)creo_memoria(sizeof(dato)*CANTIDAD, &id_memoria, CLAVE_BASE);
 	
