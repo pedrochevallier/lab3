@@ -1,4 +1,5 @@
 #include <definiciones.h>
+#include <semaforo.h>
 #include <global.h>
 #include <cola.h>
 #define INTERVALO_PEDIDOS 2000
@@ -32,10 +33,16 @@ void procesar_evento(int id_cola_mensajes, mensaje msg)
 int main(int arg, char *argv[])
 {
     int id_cola_mensajes;
+    int id_semaforo;
+
     mensaje msg;
     id_cola_mensajes = creo_id_cola_mensajes(CLAVE_BASE);
+    id_semaforo = create_semaphore();
+
+    init_semaphore(id_semaforo, VERDE);
     while (1)
     {
+        
         recibir_mensaje(id_cola_mensajes, MSG_SUPERMERCADO, &msg);
         procesar_evento(id_cola_mensajes, msg);
     };
