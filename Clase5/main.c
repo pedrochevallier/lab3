@@ -15,34 +15,30 @@ typedef struct tipo_dato dato;
 struct tipo_dato
 {
 	int numero;
-    char letra;
+	char letra;
 };
-
 
 int main(int arg, char *argv[])
 {
-	int id_memoria;	
+	int id_memoria;
 	dato *memoria = NULL;
-	
+
 	int i;
 
-	memoria = (dato*)creo_memoria(sizeof(dato)*CANTIDAD, &id_memoria, CLAVE_BASE);
-	
+	memoria = (dato *)creo_memoria(sizeof(dato) * CANTIDAD, &id_memoria, CLAVE_BASE);
 
-	
-	while(1)
+	while (1)
 	{
 		printf("leemos la memoria\n");
-		for (i=0; i<CANTIDAD; i++)
+		for (i = 0; i < CANTIDAD; i++)
 		{
-				printf("Leido %d %c\n", memoria[i].numero, memoria[i].letra);
+			printf("Leido %d %c\n", memoria[i].numero, memoria[i].letra);
 		}
 		printf("Dejamos de leer la memoria\n");
-		sleep (1);
+		sleep(1);
 	}
 
-	
-	shmdt ((char *)memoria);
-	shmctl (id_memoria, IPC_RMID, (struct shmid_ds *)NULL);
+	shmdt((char *)memoria);
+	shmctl(id_memoria, IPC_RMID, (struct shmid_ds *)NULL);
 	return 0;
 }
