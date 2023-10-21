@@ -4,6 +4,7 @@
 int creo_id_cola_mensajes(int clave)
 {
     int id_cola_mensajes = msgget(creo_clave(clave), 0600 | IPC_CREAT);
+    
     if (id_cola_mensajes == -1)
     {
         printf("Error al obtener identificador para cola mensajes\n");

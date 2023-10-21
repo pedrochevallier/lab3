@@ -9,7 +9,7 @@
 #include <sys/msg.h>
 #include <time.h>
 #include <string.h>
-#define CLAVE_BASE 33
+#define CLAVE_BASE 140
 #define SEMAFORO0 0
 #define LARGO_TMENSAJE 1024
 typedef struct tipo_mensajes mensaje;

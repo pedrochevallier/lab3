@@ -3,7 +3,6 @@
 
 #define ROJO 0
 #define VERDE 1
-#define CLAVE_BASE 33
 
 int create_semaphore(void);
 void init_semaphore(int, int);

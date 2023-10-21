@@ -6,6 +6,7 @@
 #include <semaforo.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
+#include <global.h>
 
 /*funcion que crea el semaforo*/
 int create_semaphore(void)
