@@ -9,7 +9,7 @@
 #include <sys/msg.h>
 #include <time.h>
 #include <string.h>
-#define CLAVE_BASE 33
+#define CLAVE_BASE 555
 
 #define SEMAFORO0 0
 #define LARGO_TMENSAJE 1024
@@ -20,6 +20,13 @@ struct tipo_mensajes
     int int_rte;                       // Remitente
     int int_evento;                    // Numero de evento
     char char_mensaje[LARGO_TMENSAJE]; // mensaje
+};
+
+typedef struct clientes cliente;
+struct clientes
+{
+    int numero_cliente;
+    int saldo;
 };
 
 #endif

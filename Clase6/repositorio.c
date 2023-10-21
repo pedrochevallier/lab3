@@ -3,7 +3,7 @@
 #include <cola.h>
 #include <semaforo.h>
 #include <unistd.h>
-#define INTERVALO_PEDIDOS 2
+#define INTERVALO_PEDIDOS 100
 void procesar_evento(int id_cola_mensajes, mensaje msg)
 {
     printf("Destino %d\n", (int)msg.long_dest);
@@ -36,19 +36,19 @@ int main(int arg, char *argv[])
         printf("enviando mensaje\n");
         enviar_mensaje(id_cola_mensajes, MSG_SUPERMERCADO, MSG_REPOSITOR, EVT_SUMA_STOCK, "SUMA UNO");
         semaphore_release(id_semaforo);
-        usleep(100 * 1000);
+        usleep(1000 * 1000);
 
         semaphore_wait(id_semaforo);
         printf("enviando mensaje 2\n");
         enviar_mensaje(id_cola_mensajes, MSG_SUPERMERCADO, MSG_REPOSITOR, EVT_CONSULTA_STOCK, "DECIME EL STOCK POR FAVOR");
         semaphore_release(id_semaforo);
-        usleep(100 * 1000);
+        usleep(1000 * 1000);
 
         semaphore_wait(id_semaforo);
         printf("recibiendo mensaje\n");
         recibir_mensaje(id_cola_mensajes, MSG_REPOSITOR, &msg);
         semaphore_release(id_semaforo);
-        usleep(100 * 1000);
+        usleep(1000 * 1000);
 
         semaphore_wait(id_semaforo);
         printf("procesando evento\n");
