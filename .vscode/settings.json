@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "unistd.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "memory.h": "c",
+        "definiciones.h": "c"
     }
 }
