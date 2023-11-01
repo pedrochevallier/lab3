@@ -2,6 +2,9 @@
 #include <key.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
 
 int creo_id_cola_mensajes(int clave)
 {

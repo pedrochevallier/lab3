@@ -3,6 +3,7 @@
         "unistd.h": "c",
         "stdio.h": "c",
         "memory.h": "c",
-        "definiciones.h": "c"
+        "definiciones.h": "c",
+        "pthread.h": "c"
     }
 }
