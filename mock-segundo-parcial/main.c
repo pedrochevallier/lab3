@@ -17,7 +17,6 @@ int main(int arg, char *argv[])
     int id_cola_mensajes;
     int id_semaforo;
     insumos insumo[4];
-
     
     if (arg != 2)
     {
@@ -50,7 +49,7 @@ int main(int arg, char *argv[])
 
     for (i = 0; i < cant; i++)
     {
-        if (pthread_create(&idHilo[i], &atributos, funcionThread, NULL) != 0)
+        if (pthread_create(&idHilo[i], &atributos, funcionThread, &i) != 0)
         {
             perror("No puedo crear thread");
             exit(-1);

@@ -14,6 +14,10 @@ void *funcionThread(void *parametro)
     int id_cola_mensajes;
     mensaje msg;
     int i = 0;
+    int num_hormiga;    
+    num_hormiga = *(int *)parametro;
+
+    printf("Soy la hormiga numero: %d\n", num_hormiga);
 
     id_cola_mensajes = creo_id_cola_mensajes(CLAVE_BASE);
     pthread_mutex_lock(&mutex);

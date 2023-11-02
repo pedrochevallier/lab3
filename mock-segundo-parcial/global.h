@@ -14,6 +14,12 @@ struct cant_insumos
      int cant_de_insumo;
 };
 
+typedef struct data data;
+struct data
+{
+    insumos *array;
+    int num_hormiga;
+};
 
 typedef struct tipo_mensajes mensaje;
 struct tipo_mensajes
