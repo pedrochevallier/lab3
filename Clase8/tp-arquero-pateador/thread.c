@@ -12,6 +12,8 @@ void *funcionThread(void *parametro)
     int num_jugador;
     mensaje msg;
     int fin = 0;
+    char evento[20];
+    char devolucion[30];
     num_jugador = *(int *)parametro;
 
     id_cola_mensajes = creo_id_cola_mensajes(CLAVE_BASE);
@@ -25,12 +27,12 @@ void *funcionThread(void *parametro)
     {
         if (recibir_mensaje(id_cola_mensajes, MSG_PATEADOR + num_jugador, &msg) != -1)
         {
-            procesar_evento_pateador(id_cola_mensajes, msg);
+            procesar_evento_pateador(id_cola_mensajes, msg, evento);
             fin = 1;
         }
         usleep(1000);
     }
     pthread_mutex_unlock(&mutex);
-
-    pthread_exit((void *)"Listo");
+    sprintf(devolucion, "Jugador %d: %s",num_jugador,evento);
+    pthread_exit((void *)devolucion);
 }

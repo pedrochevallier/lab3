@@ -42,6 +42,7 @@ int main(int arg, char *argv[])
     for (i = 0; i < CANT_JUGADORES; i++)
     {
         pthread_join(idHilo[i], (void **)&valorDevuelto);
+        printf("%s\n",valorDevuelto);
     }
 
     return 0;
