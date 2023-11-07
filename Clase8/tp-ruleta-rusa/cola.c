@@ -1,7 +1,5 @@
 #include <cola.h>
 #include <key.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 int creo_id_cola_mensajes(int clave)
 {

@@ -53,7 +53,7 @@ int main(int arg, char *argv[])
             
             semaphore_release(id_semaforo);
             
-            printf("Ingrese el numero de vuelo: saraza");
+            printf("Ingrese el numero de vuelo: ");
             scanf("%d", &vuelo);
             while ((vuelo < 1000 || vuelo > 1010) && vuelo != 0)
             {

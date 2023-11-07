@@ -2,6 +2,10 @@
 #include <key.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+#include <global.h>
 
 int creo_id_cola_mensajes(int clave)
 {
@@ -16,6 +20,11 @@ int creo_id_cola_mensajes(int clave)
 }
 int enviar_mensaje(int id_cola_mensajes, long rLongDest, int rIntRte, int rIntEvento, char *rpCharMsg)
 {
+    // id de la cola de mensaje
+    // destinatario
+    // remitente
+    // evento
+    // mensaje
     mensaje msg;
     msg.long_dest = rLongDest;
     msg.int_rte = rIntRte;
@@ -25,9 +34,12 @@ int enviar_mensaje(int id_cola_mensajes, long rLongDest, int rIntRte, int rIntEv
 }
 int recibir_mensaje(int id_cola_mensajes, long rLongDest, mensaje *rMsg)
 {
+    // id de la cola de mensaje
+    // destinatario
+    // mensaje
     mensaje msg;
     int res;
-    res = msgrcv(id_cola_mensajes, (struct msgbuf *)&msg, sizeof(msg.int_rte) + sizeof(msg.int_evento) + sizeof(msg.char_mensaje), rLongDest, 0);
+    res = msgrcv(id_cola_mensajes, (struct msgbuf *)&msg, sizeof(msg.int_rte) + sizeof(msg.int_evento) + sizeof(msg.char_mensaje), rLongDest, IPC_NOWAIT);
     rMsg->long_dest = msg.long_dest;
     rMsg->int_rte = msg.int_rte;
     rMsg->int_evento = msg.int_evento;
