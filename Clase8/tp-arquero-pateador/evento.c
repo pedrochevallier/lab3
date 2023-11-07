@@ -4,9 +4,9 @@
 #include <cola.h>
 #include <string.h>
 
-void procesar_evento_arquero(int id_cola_mensajes, mensaje msg)
+int procesar_evento_arquero(int id_cola_mensajes, mensaje msg)
 {
-    int rand_selection;
+    int rand_selection = 0;
     srand(time(NULL));
     switch (msg.int_evento)
     {
@@ -21,14 +21,17 @@ void procesar_evento_arquero(int id_cola_mensajes, mensaje msg)
         break;
     }
     printf("------------------------------\n");
+    return rand_selection;
 }
 
-void procesar_evento_pateador(int id_cola_mensajes, mensaje msg, data *datos_thread)
+void procesar_evento_pateador(int id_cola_mensajes, mensaje msg, void *thread_data)
 {
+    data *datos_thread = (data*) thread_data;
     switch (msg.int_evento)
     {
     case EVT_GOL:
-        sprintf(datos_thread->evento, "GOL");
+        strncpy(datos_thread->evento, "GOL", sizeof(datos_thread->evento));
+        datos_thread->evento[sizeof(datos_thread->evento) - 1] = '\0';
         printf("GOOOOOOOOOL\n");
         break;
     case EVT_PALO:
