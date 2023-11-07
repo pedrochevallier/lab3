@@ -27,7 +27,6 @@ void procesar_evento_pateador(int id_cola_mensajes, mensaje msg, char *evento){
     switch (msg.int_evento)
     {
     case EVT_GOL:
-    sprintf(evento, "GOL");
         printf("GOOOOOOOOOL\n");
         break;
     case EVT_PALO:

@@ -33,6 +33,5 @@ void *funcionThread(void *parametro)
         usleep(1000);
     }
     pthread_mutex_unlock(&mutex);
-    sprintf(devolucion, "Jugador %d: %s",num_jugador,evento);
-    pthread_exit((void *)devolucion);
+    return 0;
 }
