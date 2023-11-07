@@ -18,6 +18,20 @@ struct tipo_mensajes
     char char_mensaje[LARGO_TMENSAJE]; // mensaje
 };
 
+typedef struct goles s_gol;
+struct goles
+{
+    int gol;
+    int jugador;
+};
+
+typedef struct thread_data data;
+struct thread_data
+{
+    int num_jugador;
+    char evento[20];
+};
+
 typedef enum
 {
     MSG_NADIE,

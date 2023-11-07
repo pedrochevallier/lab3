@@ -14,17 +14,13 @@ int main(int arg, char *argv[])
     pthread_t *idHilo;
     pthread_attr_t atributos;
 
-    int id_cola_mensajes;
-    int *pateador;
     int i;
-    char *valorDevuelto = NULL;
 
+    data *thread_data;
 
-    printf("llegue hasta aca\n");
-    pateador = (int *)malloc(sizeof(int) * CANT_JUGADORES);
     idHilo = (pthread_t *)malloc(sizeof(pthread_t) * CANT_JUGADORES);
+    thread_data = (data *)malloc(sizeof(data) * CANT_JUGADORES);
 
-    id_cola_mensajes = creo_id_cola_mensajes(CLAVE_BASE);
 
     pthread_mutex_init(&mutex, NULL);
     pthread_attr_init(&atributos);
@@ -32,8 +28,8 @@ int main(int arg, char *argv[])
 
     for (i = 0; i < CANT_JUGADORES; i++)
     {
-        pateador[i] = i;
-        if (pthread_create(&idHilo[i], &atributos, funcionThread, &pateador[i]) != 0)
+        thread_data[i].num_jugador = i;
+        if (pthread_create(&idHilo[i], &atributos, funcionThread, &thread_data[i]) != 0)
         {
             perror("No puedo crear thread");
             exit(-1);
@@ -41,7 +37,11 @@ int main(int arg, char *argv[])
     }
     for (i = 0; i < CANT_JUGADORES; i++)
     {
-        pthread_join(idHilo[i], (void **)&valorDevuelto);
+        pthread_join(idHilo[i], NULL);
+    }
+    for (i = 0; i < CANT_JUGADORES; i++)
+    {
+        printf("El jugador %d: %s\n", thread_data[i].num_jugador + 1, thread_data[i].evento);
     }
     return 0;
 }
