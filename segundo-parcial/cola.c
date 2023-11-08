@@ -18,7 +18,7 @@ int creo_id_cola_mensajes(int clave)
     }
     return id_cola_mensajes;
 }
-int enviar_mensaje(int id_cola_mensajes, long rLongDest, int rIntRte, int rIntEvento, char *rpCharMsg)
+int enviar_mensaje(int id_cola_mensajes, long rLongDest, int rIntRte, int rIntEvento, int presidente, int vice)
 {
     // id de la cola de mensaje
     // destinatario
@@ -29,8 +29,8 @@ int enviar_mensaje(int id_cola_mensajes, long rLongDest, int rIntRte, int rIntEv
     msg.long_dest = rLongDest;
     msg.int_rte = rIntRte;
     msg.int_evento = rIntEvento;
-    rMsg->presidente = msg.presidente;
-    rMsg->vice_presidente = msg.vice_presidente;
+    msg.presidente = presidente;
+    msg.vice_presidente = vice;
     return msgsnd(id_cola_mensajes, (struct msgbuf *)&msg, sizeof(msg.int_rte) + sizeof(msg.int_evento) + sizeof(msg.presidente) + sizeof(msg.vice_presidente), IPC_NOWAIT);
 }
 int recibir_mensaje(int id_cola_mensajes, long rLongDest, mensaje *rMsg)
