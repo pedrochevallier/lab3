@@ -18,7 +18,7 @@ struct tipo_mensajes
     char char_mensaje[LARGO_TMENSAJE]; // mensaje
 };
 
-typedef struct thread_data data;
+typedef struct thread_data array_type;
 struct thread_data
 {
     int num_jugador;

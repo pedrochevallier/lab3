@@ -28,7 +28,7 @@ int main(int arg, char *argv[])
 
     for (i = 0; i < CANT; i++)
     {
-        array[i].algo = i;
+        array[i].num_jugador = i;
         if (pthread_create(&idHilo[i], &atributos, funcionThread, &array[i]) != 0)
         {
             perror("No puedo crear thread");
@@ -40,5 +40,6 @@ int main(int arg, char *argv[])
         pthread_join(idHilo[i], NULL);
     }
 
+    pthread_mutex_destroy(&mutex);
     return 0;
 }

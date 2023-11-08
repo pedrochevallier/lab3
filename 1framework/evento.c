@@ -9,8 +9,8 @@ void procesar_evento_arquero(int id_cola_mensajes, mensaje msg)
     srand(time(NULL));
     switch (msg.int_evento)
     {
-    case EVT:
-        enviar_mensaje(id_cola_mensajes, msg.int_rte, msg.long_dest, rand_selection, "");
+    case EVT_GOL:
+        enviar_mensaje(id_cola_mensajes, msg.int_rte, msg.long_dest, 2, "");
         break;
     default:
         printf("\nEvento sin definir\n");
@@ -21,7 +21,7 @@ void procesar_evento_arquero(int id_cola_mensajes, mensaje msg)
 
 void procesar_evento_pateador(int id_cola_mensajes, mensaje msg, void *thread_data)
 {
-    data *datos_thread = (data*) thread_data;
+    array_type *datos_thread = (array_type*) thread_data;
     switch (msg.int_evento)
     {
     case EVT_GOL:
@@ -29,7 +29,7 @@ void procesar_evento_pateador(int id_cola_mensajes, mensaje msg, void *thread_da
         datos_thread->evento[sizeof(datos_thread->evento) - 1] = '\0';
         printf("GOOOOOOOOOL\n");
         break;
-    case EVT_PALO:
+    /*case EVT_PALO:
         sprintf(datos_thread->evento, "PALO");
         printf("UFFFFFFFF\n");
         break;
@@ -43,7 +43,7 @@ void procesar_evento_pateador(int id_cola_mensajes, mensaje msg, void *thread_da
         break;
     default:
         printf("\nEvento sin definir\n");
-        break;
+        break;*/
     }
     printf("------------------------------\n");
 }

@@ -7,6 +7,7 @@
 #include <semaforo.h>
 #include <cola.h>
 #include <evento.h>
+#include <sys/msg.h>
 
 int main(int arg, char *argv[])
 {
@@ -19,7 +20,7 @@ int main(int arg, char *argv[])
     
     array = (array_type *)malloc(sizeof(array_type) * CANT);
 
-    if (recibir_mensaje(id_cola_mensajes, MSG_PARA_MI, &msg) != -1)
+    if (recibir_mensaje(id_cola_mensajes, MSG_ARQUERO, &msg) != -1)
     {
         pthread_mutex_lock(&mutex);
 
@@ -27,6 +28,8 @@ int main(int arg, char *argv[])
 
         pthread_mutex_unlock(&mutex);
     }
+
+    msgctl(id_cola_mensajes, IPC_RMID, NULL);
     
     return 0;
 }
