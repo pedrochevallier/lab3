@@ -4,7 +4,7 @@
 #include <time.h>
 
 
-int generarTipo(){
+int generarTipo(void){
     int num;
 
     printf("Generando tipo de medicamento\n");
@@ -15,7 +15,7 @@ int generarTipo(){
 }
 
 
-int generarColor(){
+int generarColor(void){
     int num;
 
     printf("Generando color de medicamento\n");

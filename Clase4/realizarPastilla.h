@@ -1,7 +1,7 @@
 #ifndef _REALIZARPASTILLA
 #define _REALIZARPASTILLA
 
-int generarTipo();
-int generarColor();
+int generarTipo(void);
+int generarColor(void);
 
 #endif
