@@ -5,10 +5,11 @@
 #define LARGO_TMENSAJE 1024
 #define CLAVE_BASE 33
 #define CANT 5
-#define CANTIDAD 2
+#define CANTIDAD 100
 
-pthread_mutex_t mutex1;
+pthread_mutex_t mutex;
 pthread_mutex_t mutex2;
+
 
 
 typedef struct tipo_mensajes mensaje;
@@ -63,5 +64,6 @@ typedef enum
     EVT_INICIO,
     EVT_VOTO
 } Eventos;
+
 
 #endif

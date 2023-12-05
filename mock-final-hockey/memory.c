@@ -8,7 +8,7 @@ void* creo_memoria(int size, int* r_id_memoria, int clave_base)
 {
 	void* ptr_memoria;
 	int id_memoria;
-	id_memoria = shmget (creo_clave(clave_base), size, 0777 | IPC_CREAT); 
+	id_memoria = shmget (creo_clave(clave_base), size, 0666 | IPC_CREAT); 
 
 	if (id_memoria == -1)
 	{
