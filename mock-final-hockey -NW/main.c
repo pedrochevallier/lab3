@@ -45,6 +45,7 @@ int main(int arg, char *argv[])
 			perror("No puedo crear thread");
 			exit(-1);
 		}
+		usleep(1000*1000);
 	}
 
 	for (i = 0; i < cant; i++)

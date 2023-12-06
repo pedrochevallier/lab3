@@ -20,7 +20,7 @@ int main(int arg, char *argv[])
     
     array = (array_type *)malloc(sizeof(array_type) * CANT);
 
-    if (recibir_mensaje(id_cola_mensajes, MSG_ARQUERO, &msg) != -1)
+    if (recibir_mensaje(id_cola_mensajes, MSG_PANEL, &msg) != -1)
     {
         pthread_mutex_lock(&mutex);
 

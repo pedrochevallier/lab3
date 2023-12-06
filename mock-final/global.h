@@ -3,13 +3,13 @@
 
 #include <pthread.h>
 #define LARGO_TMENSAJE 1024
-#define CLAVE_BASE 33
-#define CANT 5
-#define CANTIDAD 100
+#define CLAVE_BASE 11
+#define CLAVE 22
+#define CLAVE1 33
+#define CLAVE2 44
+#define CANT 7
 
 pthread_mutex_t mutex;
-pthread_mutex_t mutex2;
-
 
 
 typedef struct tipo_mensajes mensaje;
@@ -22,28 +22,7 @@ struct tipo_mensajes
     int vice_presidente;
 };
 
-typedef struct tipo_dato dato;
-struct tipo_dato
-{
-	int numero_equipo;
-	int puntaje;
-};
-
-typedef struct tipo_arranca arranca;
-struct tipo_arranca
-{
-	int equipo1;
-	int equipo2;
-};
-
-typedef struct tipo_equipos equipo;
-struct tipo_equipos
-{
-	int equipo1;
-	int jugador_e_1;
-	int equipo2;
-	int jugador_e_2;
-};
+int proceso_comenzo;
 
 typedef struct thread_data array_type;
 struct thread_data
@@ -54,8 +33,9 @@ struct thread_data
 
 typedef enum
 {
-    MSG_EQUIPO1_JUGADOR = 0,
-    MSG_EQUIPO2_JUGADOR = 5
+    MSG_NADIE,
+    MSG_PANEL,
+    MSG_VOTANTE
 } Destinos;
 
 typedef enum
@@ -64,6 +44,5 @@ typedef enum
     EVT_INICIO,
     EVT_VOTO
 } Eventos;
-
 
 #endif

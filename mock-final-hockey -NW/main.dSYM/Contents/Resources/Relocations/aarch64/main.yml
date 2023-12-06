@@ -1,0 +1,35 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     main
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003764, symSize: 0x16C }
+  - { offsetInCU: 0x4D, offset: 0x4D, size: 0x8, addend: 0x0, symName: _mutex, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0xAC, offset: 0xAC, size: 0x8, addend: 0x0, symName: _mutex2, symBinAddr: 0x100008040, symSize: 0x0 }
+  - { offsetInCU: 0x333, offset: 0x333, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003764, symSize: 0x16C }
+  - { offsetInCU: 0x643, offset: 0x643, size: 0x8, addend: 0x0, symName: _main.cold.1, symObjAddr: 0x16C, symBinAddr: 0x100003C60, symSize: 0x1C }
+  - { offsetInCU: 0x26, offset: 0x685, size: 0x8, addend: 0x0, symName: _creo_memoria, symObjAddr: 0x0, symBinAddr: 0x1000038D0, symSize: 0x74 }
+  - { offsetInCU: 0x42, offset: 0x6A1, size: 0x8, addend: 0x0, symName: _creo_memoria, symObjAddr: 0x0, symBinAddr: 0x1000038D0, symSize: 0x74 }
+  - { offsetInCU: 0x26, offset: 0x7FA, size: 0x8, addend: 0x0, symName: _creo_clave, symObjAddr: 0x0, symBinAddr: 0x100003944, symSize: 0x3C }
+  - { offsetInCU: 0x5E, offset: 0x832, size: 0x8, addend: 0x0, symName: _creo_clave, symObjAddr: 0x0, symBinAddr: 0x100003944, symSize: 0x3C }
+  - { offsetInCU: 0x26, offset: 0x8C5, size: 0x8, addend: 0x0, symName: _funcionThread, symObjAddr: 0x0, symBinAddr: 0x100003980, symSize: 0x68 }
+  - { offsetInCU: 0x4D, offset: 0x8EC, size: 0x8, addend: 0x0, symName: _mutex, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0xAC, offset: 0x94B, size: 0x8, addend: 0x0, symName: _mutex2, symBinAddr: 0x100008040, symSize: 0x0 }
+  - { offsetInCU: 0xEE, offset: 0x98D, size: 0x8, addend: 0x0, symName: _funcionThread, symObjAddr: 0x0, symBinAddr: 0x100003980, symSize: 0x68 }
+  - { offsetInCU: 0x26, offset: 0xAEF, size: 0x8, addend: 0x0, symName: _procesar_evento_arquero, symObjAddr: 0x0, symBinAddr: 0x1000039E8, symSize: 0x68 }
+  - { offsetInCU: 0x4D, offset: 0xB16, size: 0x8, addend: 0x0, symName: _mutex, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0xAC, offset: 0xB75, size: 0x8, addend: 0x0, symName: _mutex2, symBinAddr: 0x100008040, symSize: 0x0 }
+  - { offsetInCU: 0xF9, offset: 0xBC2, size: 0x8, addend: 0x0, symName: _procesar_evento_arquero, symObjAddr: 0x0, symBinAddr: 0x1000039E8, symSize: 0x68 }
+  - { offsetInCU: 0x1D0, offset: 0xC99, size: 0x8, addend: 0x0, symName: _procesar_evento_pateador, symObjAddr: 0x68, symBinAddr: 0x100003A50, symSize: 0x44 }
+  - { offsetInCU: 0x26, offset: 0xD62, size: 0x8, addend: 0x0, symName: _creo_id_cola_mensajes, symObjAddr: 0x0, symBinAddr: 0x100003A94, symSize: 0x38 }
+  - { offsetInCU: 0x4D, offset: 0xD89, size: 0x8, addend: 0x0, symName: _mutex, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0xAC, offset: 0xDE8, size: 0x8, addend: 0x0, symName: _mutex2, symBinAddr: 0x100008040, symSize: 0x0 }
+  - { offsetInCU: 0xB5, offset: 0xDF1, size: 0x8, addend: 0x0, symName: _enviar_mensaje, symObjAddr: 0x38, symBinAddr: 0x100003ACC, symSize: 0x30 }
+  - { offsetInCU: 0x154, offset: 0xE90, size: 0x8, addend: 0x0, symName: _recibir_mensaje, symObjAddr: 0x68, symBinAddr: 0x100003AFC, symSize: 0x58 }
+  - { offsetInCU: 0x1EB, offset: 0xF27, size: 0x8, addend: 0x0, symName: _borrar_mensajes, symObjAddr: 0xC0, symBinAddr: 0x100003B54, symSize: 0x44 }
+  - { offsetInCU: 0x261, offset: 0xF9D, size: 0x8, addend: 0x0, symName: _creo_id_cola_mensajes, symObjAddr: 0x0, symBinAddr: 0x100003A94, symSize: 0x38 }
+  - { offsetInCU: 0x26, offset: 0x114A, size: 0x8, addend: 0x0, symName: _create_semaphore, symObjAddr: 0x0, symBinAddr: 0x100003B98, symSize: 0x40 }
+  - { offsetInCU: 0x48, offset: 0x116C, size: 0x8, addend: 0x0, symName: _create_semaphore, symObjAddr: 0x0, symBinAddr: 0x100003B98, symSize: 0x40 }
+  - { offsetInCU: 0xF7, offset: 0x121B, size: 0x8, addend: 0x0, symName: _init_semaphore, symObjAddr: 0x40, symBinAddr: 0x100003BD8, symSize: 0x28 }
+  - { offsetInCU: 0x16A, offset: 0x128E, size: 0x8, addend: 0x0, symName: _semaphore_release, symObjAddr: 0x68, symBinAddr: 0x100003C00, symSize: 0x30 }
+  - { offsetInCU: 0x235, offset: 0x1359, size: 0x8, addend: 0x0, symName: _semaphore_wait, symObjAddr: 0x98, symBinAddr: 0x100003C30, symSize: 0x30 }
+...

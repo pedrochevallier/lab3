@@ -17,12 +17,12 @@ void *funcionThread(void *parametro)
 
     pthread_mutex_lock(&mutex);
 
-    enviar_mensaje(id_cola_mensajes, MSG_ARQUERO, MSG_PATEADOR + array->num_jugador, EVT_TIRO, "");
+    enviar_mensaje(id_cola_mensajes, MSG_PANEL, MSG_VOTANTE + array->num_jugador, EVT_VOTO, "");
     usleep(1000 * 1000);
     printf("soy el jugador %d y pateo al arco\n",array->num_jugador + 1);
     while (fin == 0)
     {
-        if (recibir_mensaje(id_cola_mensajes, MSG_PATEADOR + array->num_jugador, &msg) != -1)
+        if (recibir_mensaje(id_cola_mensajes, MSG_VOTANTE + array->num_jugador, &msg) != -1)
         {
             procesar_evento_pateador(id_cola_mensajes, msg, array);
             fin = 1;
