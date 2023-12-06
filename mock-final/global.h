@@ -7,9 +7,10 @@
 #define CLAVE 22
 #define CLAVE1 33
 #define CLAVE2 44
-#define CANT 7
+#define CANT 5
 
-pthread_mutex_t mutex;
+pthread_mutex_t mutex1;
+pthread_mutex_t mutex2;
 
 
 typedef struct tipo_mensajes mensaje;
@@ -22,27 +23,47 @@ struct tipo_mensajes
     int vice_presidente;
 };
 
-int proceso_comenzo;
+typedef struct thread_comenzo comenzo;
+struct thread_comenzo
+{
+    int thread1;
+    int thread2;
+};
+
+typedef struct tipo_turnos turnos;
+struct tipo_turnos
+{
+    int equipo;
+    int jugador;
+};
+
 
 typedef struct thread_data array_type;
 struct thread_data
 {
+    int num_equipo;
     int num_jugador;
     char evento[20];
+};
+
+typedef struct tipo_puntaje puntaje;
+struct tipo_puntaje
+{
+    int puntos;
 };
 
 typedef enum
 {
     MSG_NADIE,
-    MSG_PANEL,
-    MSG_VOTANTE
+    MSG_ARQUERO1 = 1,
+    MSG_ARQUERO2 = 6
 } Destinos;
 
 typedef enum
 {
     EVT_NINGUNO,
-    EVT_INICIO,
-    EVT_VOTO
+    EVT_TIRO,
+    EVT_GOL
 } Eventos;
 
 #endif

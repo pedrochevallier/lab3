@@ -19,11 +19,12 @@ void *funcionThread(void *parametro)
     pthread_mutex_lock(&mutex);
 
 
-    //punt->puntaje = punt->puntaje + 1;
+    punt->puntaje = punt->puntaje + 1;
     printf("%d\n", punt->puntaje);
 
     pthread_mutex_unlock(&mutex);
     usleep(100 * 1000);
+    shmdt(punt);
 
     pthread_exit((void *)"Listo");
 }

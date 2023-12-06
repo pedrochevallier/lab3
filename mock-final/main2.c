@@ -22,16 +22,11 @@ int main(int arg, char *argv[])
 
     array_type *array;
 
-    int *proceso_comenzo = NULL;
-    
-
-    proceso_comenzo = (int *)creo_memoria(sizeof(int), &id_memoria, CLAVE);
-    
-
-    *proceso_comenzo = *proceso_comenzo + 1;
-    
-    
-    while (*proceso_comenzo != 2)
+    comenzo *proceso_comenzo = NULL;
+    proceso_comenzo = (comenzo *)creo_memoria(sizeof(comenzo), &id_memoria, CLAVE);
+    proceso_comenzo->thread2 = 1;
+        
+    while (proceso_comenzo->thread1 != 1)
     {
         usleep(100 * 1000);
     }
@@ -39,14 +34,15 @@ int main(int arg, char *argv[])
     idHilo = (pthread_t *)malloc(sizeof(pthread_t) * CANT);
     array = (array_type *)malloc(sizeof(array_type) * CANT);
 
-    pthread_mutex_init(&mutex, NULL);
+    pthread_mutex_init(&mutex2, NULL);
     pthread_attr_init(&atributos);
     pthread_attr_setdetachstate(&atributos, PTHREAD_CREATE_JOINABLE);
 
     for (i = 0; i < CANT; i++)
     {
-        array[i].num_jugador = i;
-        if (pthread_create(&idHilo[i], &atributos, funcionThread, &array[i]) != 0)
+        array[i].num_equipo = 1;
+        array[i].num_jugador = i + 1;
+        if (pthread_create(&idHilo[i], &atributos, funcionThread2, &array[i]) != 0)
         {
             perror("No puedo crear thread");
             exit(-1);
@@ -57,7 +53,13 @@ int main(int arg, char *argv[])
         pthread_join(idHilo[i], NULL);
     }
 
-    pthread_mutex_destroy(&mutex);
+    proceso_comenzo->thread2 = 0;
+    while (proceso_comenzo->thread1 != 0)
+    {
+        usleep(100 * 1000);
+    }
+
+    pthread_mutex_destroy(&mutex2);
     shmdt((char *)proceso_comenzo);
 	shmctl(id_memoria, IPC_RMID, (struct shmid_ds *)NULL);
 	free(idHilo);

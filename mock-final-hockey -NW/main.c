@@ -20,7 +20,7 @@ int main(int arg, char *argv[])
 	int id_memoria_puntaje;
 	
 	int i = 0;
-	int cant = 20;
+	int cant = 200;
 
 	idHilo = (pthread_t *)malloc(sizeof(pthread_t) * cant);
 
@@ -45,7 +45,7 @@ int main(int arg, char *argv[])
 			perror("No puedo crear thread");
 			exit(-1);
 		}
-		usleep(1000*1000);
+		usleep(100*1000);
 	}
 
 	for (i = 0; i < cant; i++)

@@ -38,7 +38,7 @@ int recibir_mensaje(int id_cola_mensajes, long rLongDest, mensaje *rMsg)
     // mensaje
     mensaje msg;
     int res;
-    res = msgrcv(id_cola_mensajes, (struct msgbuf *)&msg, sizeof(msg.int_rte) + sizeof(msg.int_evento), rLongDest, IPC_NOWAIT);
+    res = msgrcv(id_cola_mensajes, (struct msgbuf *)&msg, sizeof(msg.int_rte) + sizeof(msg.int_evento), rLongDest, 0);
     rMsg->long_dest = msg.long_dest;
     rMsg->int_rte = msg.int_rte;
     rMsg->int_evento = msg.int_evento;
